@@ -9,13 +9,13 @@ import Foundation
 import Alamofire
 import RxSwift
 
-protocol SNNetworkClient {
+public protocol SNNetworkClient {
     func request<O: Decodable>(target: SNTargetType,
                                type: O.Type,
                                additionalHeaders: [String: String]) -> Observable<O>
 }
 
-final class SNNetworkClientImpl: SNNetworkClient {
+public class SNNetworkClientImpl: SNNetworkClient {
     private let baseUrl: URL
     private let section: Session = Session.default
     
@@ -27,7 +27,7 @@ final class SNNetworkClientImpl: SNNetworkClient {
         self.baseUrl = baseUrl
     }
     
-    func request<O: Decodable>(
+    public func request<O: Decodable>(
         target: SNTargetType,
         type: O.Type,
         additionalHeaders: [String: String])

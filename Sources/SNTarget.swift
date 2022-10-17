@@ -10,17 +10,17 @@ import Alamofire
 import RxSwift
 import RxRelay
 
-enum SNHttpMethod {
+public enum SNHttpMethod {
     case post
     case get
 }
 
-enum SNEncodingMethod {
+public enum SNEncodingMethod {
     case urlEncoding
     case jsonEncoding
 }
 
-protocol SNTargetType {
+public protocol SNTargetType {
     var path: String { get }
     var method: SNHttpMethod { get }
     var params: [String: Any]? { get }
@@ -28,29 +28,29 @@ protocol SNTargetType {
     var encoding: SNEncodingMethod { get }
 }
 
-struct SNDynamicTargetType: SNTargetType {
+public struct SNDynamicTargetType: SNTargetType {
     
     var baseUrl: URL?
     
     var subTarget: SNTargetType
     
-    var encoding: SNEncodingMethod {
+    public var encoding: SNEncodingMethod {
         return subTarget.encoding
     }
     
-    var params: [String: Any]? {
+    public var params: [String: Any]? {
         return subTarget.params
     }
     
-    var path: String {
+    public var path: String {
         return subTarget.path
     }
     
-    var method: SNHttpMethod {
+    public var method: SNHttpMethod {
         return subTarget.method
     }
     
-    var headers: [String : String] {
+    public var headers: [String : String] {
         return subTarget.headers
     }
 }

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = 'SNNetworkClient'
-    s.version = '1.0.1'
+    s.version = '1.0.2'
     s.license = 'MIT'
     s.summary = 'A simple network client for sending POST and GET request with Decodable response.'
     s.homepage = 'https://github.com/eitguide/SNNetworkClient/'

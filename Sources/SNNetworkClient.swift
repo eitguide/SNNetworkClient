@@ -13,6 +13,8 @@ public protocol SNNetworkClient {
     func request<O: Decodable>(target: SNTargetType,
                                type: O.Type,
                                additionalHeaders: [String: String]) -> Observable<O>
+    func request<O: Decodable>(target: SNTargetType,
+                               type: O.Type) -> Observable<O>
 }
 
 public class SNNetworkClientImpl: SNNetworkClient {
@@ -23,8 +25,12 @@ public class SNNetworkClientImpl: SNNetworkClient {
         return URLSessionConfiguration.default
     }
     
-    init(baseUrl: URL) {
+    public init(baseUrl: URL) {
         self.baseUrl = baseUrl
+    }
+    
+    public func request<O>(target: SNTargetType, type: O.Type) -> RxSwift.Observable<O> where O : Decodable {
+        return self.request(target: target, type: type, additionalHeaders: [:])
     }
     
     public func request<O: Decodable>(

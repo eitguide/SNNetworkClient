@@ -7,18 +7,6 @@
 
 import Foundation
 import Alamofire
-import RxSwift
-import RxRelay
-
-public enum SNHttpMethod {
-    case post
-    case get
-}
-
-public enum SNEncodingMethod {
-    case urlEncoding
-    case jsonEncoding
-}
 
 public protocol SNTargetType {
     var path: String { get }
@@ -54,6 +42,3 @@ public struct SNDynamicTargetType: SNTargetType {
         return subTarget.headers
     }
 }
-
-
-
